@@ -176,16 +176,8 @@ script.registerModule({
     Chat.print("Homepoint set to "+X+", "+Y+", "+Z);
     }	
     
-    if (homeSelected == true && mc.thePlayer.posX == X && mc.thePlayer.posZ == Z && module.settings.TP.get()) {
-    module.settings.TP.set(false);
-    if (module.settings.Reset.get()) {
-    homeSelected = false;	
-    module.settings.HomePoint.set("No home selected!");
-    }
-    }
-   
     if (module.settings.B73.get()) {
-    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB73.txt");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     module.settings.B73.set(false);
     }
     

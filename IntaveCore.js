@@ -157,11 +157,11 @@ script.registerModule({
             default: false
 		}),
         SetTP: Setting.boolean({
-            name: " ",
+            name: "SetHomePoint",
             default: false
 		}),
         TP: Setting.boolean({
-            name: " ",
+            name: "TPToHomePoint",
             default: false
 		}),
         s: Setting.boolean({
@@ -169,11 +169,11 @@ script.registerModule({
             default: false
 		}),
         HomePoint: Setting.text({
-            name: " ",
+            name: "HomePoint",
             default: ""
         }),
         Reset: Setting.boolean({
-            name: " ",
+            name: "ResetAfterTP",
             default: false
 		}),
         Key: Setting.boolean({

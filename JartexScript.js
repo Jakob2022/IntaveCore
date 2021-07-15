@@ -5,7 +5,7 @@ var script = registerScript({
     authors: ["FaaatPotato"]
 });
 
-//hi
+//hi hello
 
 //Thanks @Anonzme for the functions that are needed for the AutoUpdate! <3 (I got these from ScriptCloud thats sum amazing work!)
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok

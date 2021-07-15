@@ -11,7 +11,7 @@ var script = registerScript({
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
 //Also thanks to @CzechHek for helping me with problems i had in the past <3
 
-var url = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/Jartex%20Script.js";
+var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
 var name = "JartexScript";
 var pName = "JartexScript.js";
 

@@ -11,55 +11,6 @@ var script = registerScript({
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
 //Also thanks to @CzechHek for helping me with problems i had in the past <3
 
-var C05 = Java.type('net.minecraft.network.play.client.C03PacketPlayer.C05PacketPlayerLook')
-var C03 = Java.type("net.minecraft.network.play.client.C03PacketPlayer");
-var C04 = Java.type("net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition");
-var C08 = Java.type("net.minecraft.network.play.client.C08PacketPlayerBlockPlacement");
-var HentaiPacket = Java.type("net.minecraft.network.play.server.S02PacketChat");
-var Amanee = Java.type('net.minecraft.network.play.server.S12PacketEntityVelocity');
-var BlockPos = Java.type('net.minecraft.util.BlockPos');
-var thePlayer = Java.type("net.ccbluex.liquidbounce.utils.MovementUtils");
-var Block = Java.type('net.minecraft.block.Block');
-var Blocks = Java.type('net.minecraft.init.Blocks');
-var S08 = Java.type('net.minecraft.network.play.server.S08PacketPlayerPosLook');
-var RotationUtils = Java.type('net.ccbluex.liquidbounce.utils.RotationUtils');
-var Rotation = Java.type('net.ccbluex.liquidbounce.utils.Rotation');
-var DCT = Java.type("net.minecraft.network.login.server.S00PacketDisconnect");
-var Regen = Java.type("net.minecraft.network.play.server.S06PacketUpdateHealth");
-
-var FreeCam = moduleManager.getModule("FreeCam");
-var Fly = moduleManager.getModule("Fly");
-var Reach = moduleManager.getModule("Reach");
-var Teleport = moduleManager.getModule("Teleport");
-var Spammer = moduleManager.getModule("Spammer");
-
-function vClip(d) {
-mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + d, mc.thePlayer.posZ);
-}
-
-function setTimeout(func, milliseconds) {
-    var timer = new Timer("setTimeout", true);
-    timer.schedule(function () {
-        func();
-    }, milliseconds);
-
-    return timer;
-}
-
-Math.rad = function(deg) {
-    return deg * Math.PI / 180;
-}
-
-function r(min,max) {
-    return Math.floor(Math.random()*(max-min+1)+min);
-}
-
-function setYeet(_yeet) {
-	var playerYaw = Math.rad(mc.thePlayer.rotationYaw);
-	mc.thePlayer.motionX = _yeet * -Math.sin(playerYaw);
-	mc.thePlayer.motionZ = _yeet * Math.cos(playerYaw);
-}
-
 var url = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/Jartex%20Script.js";
 var name = "JartexScript";
 var pName = "JartexScript.js";

@@ -60,7 +60,7 @@ function setYeet(_yeet) {
 	mc.thePlayer.motionZ = _yeet * Math.cos(playerYaw);
 }
 
-var url = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/Jartex%20Script.js";
+var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
 var name = "JartexScript";
 var pName = "JartexScript.js";
 

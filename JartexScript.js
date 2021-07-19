@@ -1,4 +1,3 @@
-
 /// api_version=2
 var script = registerScript({
     name: "Intave Script",
@@ -97,7 +96,7 @@ script.registerModule({
             default: false
 		}),
         B72: Setting.boolean({
-            name: "LoadConfigB72",
+            name: " ",
             default: false
 		}),
         U: Setting.boolean({
@@ -189,13 +188,13 @@ script.registerModule({
     commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     module.settings.B73.set(false);
     }
-    
+
     if (module.settings.B72.get()) {
-    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB72.txt");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/10hQp2SL");
     module.settings.B72.set(false);
     }
     });
-    
+     
     module.on("key", function (e) {
     key = e.getKey();
     if (module.settings.Key.get()) {

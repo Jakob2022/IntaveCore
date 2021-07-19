@@ -1,3 +1,4 @@
+
 /// api_version=2
 var script = registerScript({
     name: "Intave Script",
@@ -12,8 +13,8 @@ var script = registerScript({
 //Also thanks to @CzechHek for helping me with problems i had in the past <3
 
 var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
-var name = "JartexScript";
-var pName = "JartexScript.js";
+var name = "IntaveScript";
+var pName = "IntaveScript.js";
 
 var URL = Java.type("java.net.URL");
 var BufferedReader = Java.type("java.io.BufferedReader");
@@ -185,7 +186,7 @@ script.registerModule({
     }
    
     if (module.settings.B73.get()) {
-    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB73.txt");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     module.settings.B73.set(false);
     }
     

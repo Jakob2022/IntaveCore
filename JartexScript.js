@@ -11,6 +11,55 @@ var script = registerScript({
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
 //Also thanks to @CzechHek for helping me with problems i had in the past <3
 
+var C05 = Java.type('net.minecraft.network.play.client.C03PacketPlayer.C05PacketPlayerLook')
+var C03 = Java.type("net.minecraft.network.play.client.C03PacketPlayer");
+var C04 = Java.type("net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition");
+var C08 = Java.type("net.minecraft.network.play.client.C08PacketPlayerBlockPlacement");
+var HentaiPacket = Java.type("net.minecraft.network.play.server.S02PacketChat");
+var Amanee = Java.type('net.minecraft.network.play.server.S12PacketEntityVelocity');
+var BlockPos = Java.type('net.minecraft.util.BlockPos');
+var thePlayer = Java.type("net.ccbluex.liquidbounce.utils.MovementUtils");
+var Block = Java.type('net.minecraft.block.Block');
+var Blocks = Java.type('net.minecraft.init.Blocks');
+var S08 = Java.type('net.minecraft.network.play.server.S08PacketPlayerPosLook');
+var RotationUtils = Java.type('net.ccbluex.liquidbounce.utils.RotationUtils');
+var Rotation = Java.type('net.ccbluex.liquidbounce.utils.Rotation');
+var DCT = Java.type("net.minecraft.network.login.server.S00PacketDisconnect");
+var Regen = Java.type("net.minecraft.network.play.server.S06PacketUpdateHealth");
+
+var FreeCam = moduleManager.getModule("FreeCam");
+var Fly = moduleManager.getModule("Fly");
+var Reach = moduleManager.getModule("Reach");
+var Teleport = moduleManager.getModule("Teleport");
+var Spammer = moduleManager.getModule("Spammer");
+
+function vClip(d) {
+mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + d, mc.thePlayer.posZ);
+}
+
+function setTimeout(func, milliseconds) {
+    var timer = new Timer("setTimeout", true);
+    timer.schedule(function () {
+        func();
+    }, milliseconds);
+
+    return timer;
+}
+
+Math.rad = function(deg) {
+    return deg * Math.PI / 180;
+}
+
+function r(min,max) {
+    return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+function setYeet(_yeet) {
+	var playerYaw = Math.rad(mc.thePlayer.rotationYaw);
+	mc.thePlayer.motionX = _yeet * -Math.sin(playerYaw);
+	mc.thePlayer.motionZ = _yeet * Math.cos(playerYaw);
+}
+
 var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
 var name = "IntaveScript";
 var pName = "IntaveScript.js";
@@ -208,3 +257,91 @@ script.registerModule({
 
 var c2;
 var c1;
+
+///api_version=2
+(script = registerScript({
+    name: "autojump",
+    authors: ["?"],
+    version: "1.0"
+})).import("Core.lib");
+
+module = {
+    category: "IntaveCore",
+    description: "it jumps.",
+    onUpdate: function () {
+        mc.thePlayer.onGround && mc.thePlayer.jump();
+    }
+}
+
+script.registerModule({
+    name: "MatrixSpeedz",
+    description: "makes you fast af (feels like you turn black)",
+    category: "Fun",
+    tag: "JS",
+    settings: {
+		M: Setting.list({
+			name: "Mode",
+			default: "TimerHop",
+			values: ["TimerHop", "Test"]
+		}),
+    }
+
+}, function (module) {
+    module.on("enable", function () {
+
+    });
+    module.on("packet", function (e) {
+    var packet = e.getPacket();	
+    });
+    module.on("disable", function () {
+    mc.timer.timerSpeed = 1;
+    mc.thePlayer.speedInAir = 0.02;
+    });
+    module.on("update", function () {
+
+    if (module.settings.M.get() == "TimerHop") {
+    if (mc.thePlayer.onGround && thePlayer.isMoving()) {
+    combat = false;	
+    if (combat == false) {	
+    mc.thePlayer.speedInAir = 0.02;	
+    mc.timer.timerSpeed = 1.00;
+    } else {
+    mc.thePlayer.speedInAir = 0.02
+    mc.timer.timerSpeed = 1;
+    }
+    mc.gameSettings.keyBindJump.pressed = true;
+    } else {
+    mc.timer.timerSpeed = 1;	
+    mc.gameSettings.keyBindJump.pressed = false;
+    }
+    	
+    if (thePlayer.isMoving() && combat == false) {
+    if (mc.thePlayer.fallDistance < 0.1) {
+    mc.timer.timerSpeed = 1.00;
+    }
+    if (mc.thePlayer.fallDistance > 0.2) {
+    mc.timer.timerSpeed = 1.20;
+    }
+    if (mc.thePlayer.fallDistance > 0.6) {
+    mc.timer.timerSpeed = 0.90;
+    mc.thePlayer.speedInAir = 0.02
+    }
+    }
+    
+    if (mc.thePlayer.fallDistance > 1) {
+    mc.timer.timerSpeed = 1;
+    mc.thePlayer.speedInAir = 0.02;
+    }
+    }
+    
+    if (module.settings.M.get() == "Test") {
+    }
+    });
+    module.on("attack", function () {
+    if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "TimerHop") {
+    mc.timer.timerSpeed = 1
+    mc.thePlayer.speedInAir = 0.02
+    combat = true;
+    }
+    });
+});

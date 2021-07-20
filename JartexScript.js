@@ -172,8 +172,7 @@ script.registerModule({
     Z = mc.thePlayer.posZ;	
     homeSelected = true;	
     module.settings.SetTP.set(false);
-    module.settings.HomePoint.set(X+", "+Y+", "+Z)
-    Chat.print("Homepoint set to "+X+", "+Y+", "+Z);
+    module.settings.HomePoint.set(hello)
     }	
     
     if (homeSelected == true && mc.thePlayer.posX == X && mc.thePlayer.posZ == Z && module.settings.TP.get()) {

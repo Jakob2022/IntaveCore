@@ -101,7 +101,7 @@ script.registerModule({
 		}),
         U: Setting.boolean({
             name: "AutoUpdate",
-            default: true
+            default: false
 		}),
         x: Setting.boolean({
             name: " ",
@@ -163,7 +163,6 @@ script.registerModule({
     	
     if (module.settings.TP.get() && !mc.thePlayer.isInWeb) {
     module.settings.TP.set(false);	
-    Chat.print("You are not in a Web");
     }	
     	
     if (module.settings.SetTP.get()) {

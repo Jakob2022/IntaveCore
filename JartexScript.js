@@ -1,4 +1,5 @@
 
+
 /// api_version=2
 var script = registerScript({
     name: "Intave Script",
@@ -121,7 +122,7 @@ script.registerModule({
             default: false
 		}),
         HomePoint: Setting.text({
-            name: "HomePoint",
+            name: "have fun",
             default: ""
         }),
         Reset: Setting.boolean({

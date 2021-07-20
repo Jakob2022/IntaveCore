@@ -1,5 +1,3 @@
-
-
 /// api_version=2
 var script = registerScript({
     name: "Intave Script",
@@ -98,7 +96,7 @@ script.registerModule({
             default: false
 		}),
         B72: Setting.boolean({
-            name: " ",
+            name: "changelog",
             default: false
 		}),
         U: Setting.boolean({
@@ -192,7 +190,7 @@ script.registerModule({
     }
 
     if (module.settings.B72.get()) {
-    commandManager.executeCommands(".config load https://pastebin.com/raw/10hQp2SL");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/yEbsKmjr");
     module.settings.B72.set(false);
     }
     });

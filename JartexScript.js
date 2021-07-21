@@ -135,13 +135,17 @@ Update = true;
 });
 
 script.registerModule({
-    name: "IntaveManager",
+    name: "IntaveManager(IK)",
     description: "Is config loader and stuff",
     category: "Fun",
     tag: "JS",
     settings: {
         B73: Setting.boolean({
             name: "LoadConfigB73",
+            default: false
+		}),
+	all: Setting.boolean({
+            name: "LoadConfigB73, binds, modules",
             default: false
 		}),
         B72: Setting.boolean({
@@ -189,6 +193,7 @@ script.registerModule({
     }
     });
     module.on("disable", function () {
+    commandManager.executeCommands(".config load https://pastebin.com/raw/Dh6Qx2Sa");
     });
     module.on("packet", function (e) {
     var packet = e.getPacket();
@@ -232,13 +237,35 @@ script.registerModule({
     }
    
     if (module.settings.B73.get()) {
-    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
+    commandManager.executeCommands(".t IntaveManager(IK)");
     module.settings.B73.set(false);
     }
 
     if (module.settings.B72.get()) {
     commandManager.executeCommands(".config load https://pastebin.com/raw/yEbsKmjr");
     module.settings.B72.set(false);
+    }
+
+    if (module.settings.all.get()) {
+    commandManager.executeCommands(".panic nonrender");
+    commandManager.executeCommands(".t teams");
+    commandManager.executeCommands(".t inventorymove");
+    commandManager.executeCommands(".t antibot");
+    commandManager.executeCommands(".t sprint");
+    commandManager.executeCommands(".t autoclicker");
+    commandManager.executeCommands(".t velocity");
+    commandManager.executeCommands(".t nojumpdelay");
+    commandManager.executeCommands(".binds clear");
+    commandManager.executeCommands(".bind scaffold g");
+    commandManager.executeCommands(".bind autojump(IK) g");
+    commandManager.executeCommands(".bind scaffold g");
+    commandManager.executeCommands(".bind killaura r");
+    commandManager.executeCommands(".bind IntaveSpeed(IK) n");
+    commandManager.executeCommands(".bind phase x");
+    commandManager.executeCommands(".bind ClickGUI rshift");
+    commandManager.executeCommands(".t IntaveManager(IK)");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
+    module.settings.all.set(false);	
     }
     });
      
@@ -258,23 +285,8 @@ script.registerModule({
 var c2;
 var c1;
 
-///api_version=2
-(script = registerScript({
-    name: "autojump",
-    authors: ["?"],
-    version: "1.0"
-})).import("Core.lib");
-
-module = {
-    category: "IntaveCore",
-    description: "it jumps.",
-    onUpdate: function () {
-        mc.thePlayer.onGround && mc.thePlayer.jump();
-    }
-}
-
 script.registerModule({
-    name: "MatrixSpeedz",
+    name: "IntaveSpeed(IK)",
     description: "makes you fast af (feels like you turn black)",
     category: "Fun",
     tag: "JS",
@@ -339,6 +351,79 @@ script.registerModule({
     });
     module.on("attack", function () {
     if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "TimerHop") {
+    mc.timer.timerSpeed = 1
+    mc.thePlayer.speedInAir = 0.02
+    combat = true;
+    }
+    });
+});
+
+script.registerModule({
+    name: "Autojump(IK)",
+    description: "autojump",
+    category: "Fun",
+    tag: "JS",
+    settings: {
+		M: Setting.list({
+			name: "Mode",
+			default: "scaffold AJ",
+			values: ["scaffold AJ"]
+		}),
+    }
+
+}, function (module) {
+    module.on("enable", function () {
+
+    });
+    module.on("packet", function (e) {
+    var packet = e.getPacket();	
+    });
+    module.on("disable", function () {
+    mc.timer.timerSpeed = 1;
+    mc.thePlayer.speedInAir = 0.02;
+    });
+    module.on("update", function () {
+
+    if (module.settings.M.get() == "scaffold AJ") {
+    if (mc.thePlayer.onGround && thePlayer.isMoving()) {
+    combat = false;	
+    if (combat == false) {	
+    mc.thePlayer.speedInAir = 0.02;	
+    mc.timer.timerSpeed = 1.00;
+    } else {
+    mc.thePlayer.speedInAir = 0.02
+    mc.timer.timerSpeed = 1;
+    }
+    mc.gameSettings.keyBindJump.pressed = true;
+    } else {
+    mc.timer.timerSpeed = 1;	
+    mc.gameSettings.keyBindJump.pressed = false;
+    }
+    	
+    if (thePlayer.isMoving() && combat == false) {
+    if (mc.thePlayer.fallDistance < 0.1) {
+    mc.timer.timerSpeed = 1.00;
+    }
+    if (mc.thePlayer.fallDistance > 0.2) {
+    mc.timer.timerSpeed = 1;
+    }
+    if (mc.thePlayer.fallDistance > 0.6) {
+    mc.timer.timerSpeed = 1;
+    mc.thePlayer.speedInAir = 0.02
+    }
+    }
+    
+    if (mc.thePlayer.fallDistance > 1) {
+    mc.timer.timerSpeed = 1;
+    mc.thePlayer.speedInAir = 0.02;
+    }
+    }
+    
+    if (module.settings.M.get() == "Test") {
+    }
+    });
+    module.on("attack", function () {
+    if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "scaffold AJ") {
     mc.timer.timerSpeed = 1
     mc.thePlayer.speedInAir = 0.02
     combat = true;

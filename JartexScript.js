@@ -136,7 +136,7 @@ var Y;
 var Z;
 
 script.registerModule({
-    name: "IntaveManager",
+    name: "🟥IntaveManager",
     description: "Is config loader and stuff",
     category: "Fun",
     tag: "JS",
@@ -187,6 +187,7 @@ script.registerModule({
     module.on("enable", function () {
     });
     module.on("disable", function () {
+    commandManager.executeCommands(".config load https://pastebin.com/raw/Dh6Qx2Sa")
     });
     module.on("packet", function (e) {
     var packet = e.getPacket();
@@ -278,7 +279,7 @@ var sneakPossible;
 var combat;
 
 script.registerModule({
-    name: "MatrixSpeedz",
+    name: "🟥IntaveSpeed",
     description: "makes you fast af (feels like you turn black)",
     category: "Fun",
     tag: "JS",
@@ -311,7 +312,7 @@ script.registerModule({
     combat = false;	
     if (combat == false) {	
     mc.thePlayer.speedInAir = 0.0204;	
-    mc.timer.timerSpeed = 0.65;
+    mc.timer.timerSpeed = 1.00;
     } else {
     mc.thePlayer.speedInAir = 0.02
     mc.timer.timerSpeed = 1;
@@ -324,13 +325,13 @@ script.registerModule({
     	
     if (thePlayer.isMoving() && combat == false) {
     if (mc.thePlayer.fallDistance < 0.1) {
-    mc.timer.timerSpeed = 1.81;
+    mc.timer.timerSpeed = 1;
     }
     if (mc.thePlayer.fallDistance > 0.2) {
-    mc.timer.timerSpeed = 0.42;
+    mc.timer.timerSpeed = 1.2;
     }
     if (mc.thePlayer.fallDistance > 0.6) {
-    mc.timer.timerSpeed = 1.05;
+    mc.timer.timerSpeed = 1.00;
     mc.thePlayer.speedInAir = 0.02019
     }
     }
@@ -346,7 +347,7 @@ script.registerModule({
     });
     module.on("attack", function () {
     if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "TimerHop" && module.settings.c.get()) {
-    mc.timer.timerSpeed = 1
+    mc.timer.timerSpeed = 1;
     mc.thePlayer.speedInAir = 0.02
     combat = true;
     }
@@ -356,3 +357,26 @@ script.registerModule({
 var falseground;
 var waitFlag;
 var hasFallen;
+
+script.registerModule({
+    name: "🟥AutoJump",
+    description: "AutoJump",
+    category: "Fun",
+    tag: "JS",
+}, function (module) {
+
+    module.on("motion", function(eventData) {
+        if (mc.thePlayer.onGround){
+            mc.thePlayer.jump();
+        }
+    });
+
+    module.on("enable", function() {
+        Chat.print("AutoJump enabled");
+    });
+
+    module.on("disable", function() {
+        Chat.print("AutoJump disabled");
+    });
+
+});

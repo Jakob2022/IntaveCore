@@ -64,7 +64,7 @@ function setYeet(_yeet) {
 }
 
 var log = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/changelog.txt";
-var url = "	";
+var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
 var name = "JartexScript";
 var pName = "JartexScript.js";
 

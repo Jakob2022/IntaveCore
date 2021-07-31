@@ -137,7 +137,7 @@ var Y;
 var Z;
 
 script.registerModule({
-    name: " �IntaveManager|",
+    name: " ←IntaveManager|",
     description: "Is config loader and stuff",
     category: "Fun",
     tag: "JS",

@@ -1,6 +1,6 @@
 /// api_version=2
 var script = registerScript({
-    name: "Jartex Script",
+    name: "Intave Script",
     version: "1.0",
     authors: ["FaaatPotato"]
 });
@@ -136,7 +136,7 @@ var Y;
 var Z;
 
 script.registerModule({
-    name: "JartexManager",
+    name: "IntaveManager",
     description: "Is config loader and stuff",
     category: "Fun",
     tag: "JS",

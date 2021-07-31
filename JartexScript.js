@@ -158,11 +158,11 @@ script.registerModule({
             default: false
 		}),
         SetTP: Setting.boolean({
-            name: "SetHomePoint",
+            name: " ",
             default: false
 		}),
         TP: Setting.boolean({
-            name: "TPToHomePoint",
+            name: "have fun",
             default: false
 		}),
         s: Setting.boolean({
@@ -170,15 +170,15 @@ script.registerModule({
             default: false
 		}),
         HomePoint: Setting.text({
-            name: "HomePoint",
+            name: "gg",
             default: ""
         }),
         Reset: Setting.boolean({
-            name: "ResetAfterTP",
+            name: " ",
             default: false
 		}),
         Key: Setting.boolean({
-            name: "UseKeyBinds",
+            name: " ",
             default: true
 		}),
     }
@@ -214,7 +214,6 @@ script.registerModule({
     
     if (module.settings.TP.get() && !mc.thePlayer.isInWeb) {
     module.settings.TP.set(false);	
-    Chat.print("You are not in a Web");
     }	
     	
     if (module.settings.SetTP.get()) {
@@ -223,15 +222,14 @@ script.registerModule({
     Z = mc.thePlayer.posZ;	
     homeSelected = true;	
     module.settings.SetTP.set(false);
-    module.settings.HomePoint.set(X+", "+Y+", "+Z)
-    Chat.print("Homepoint set to "+X+", "+Y+", "+Z);
+    module.settings.HomePoint.set( )
     }	
     
     if (homeSelected == true && mc.thePlayer.posX == X && mc.thePlayer.posZ == Z && module.settings.TP.get()) {
-    module.settings.TP.set(false);
+    module.settings.TP.set( );
     if (module.settings.Reset.get()) {
     homeSelected = false;	
-    module.settings.HomePoint.set("No home selected!");
+    module.settings.HomePoint.set(" ");
     }
     }
    

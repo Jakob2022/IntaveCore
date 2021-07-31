@@ -146,7 +146,7 @@ script.registerModule({
             default: false
 		}),
         B72: Setting.boolean({
-            name: "LoadConfigB72",
+            name: "changelog",
             default: false
 		}),
         dld: Setting.boolean({
@@ -207,7 +207,6 @@ script.registerModule({
     if (module.settings.dld.get()) {
     createNewFile(name + ".js");	
     writeIn(name + ".js");
-    Chat.print(getData(log));
     module.settings.dld.set(false);	
     }	
     	
@@ -237,12 +236,12 @@ script.registerModule({
     //config
     
     if (module.settings.B73.get()) {
-    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB73.txt");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     module.settings.B73.set(false);
     }
     
     if (module.settings.B72.get()) {
-    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB72.txt");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/yEbsKmjr");
     module.settings.B72.set(false);
     }
     });

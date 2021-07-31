@@ -1,7 +1,7 @@
 
 /// api_version=2
 var script = registerScript({
-    name: "Intave Script",
+    name: "🩠Intave Script",
     version: "1.0",
     authors: ["FaaatPotato"]
 });
@@ -137,7 +137,7 @@ var Y;
 var Z;
 
 script.registerModule({
-    name: "🟥IntaveManager",
+    name: "🩠IntaveManager",
     description: "Is config loader and stuff",
     category: "Fun",
     tag: "JS",
@@ -280,7 +280,7 @@ var sneakPossible;
 var combat;
 
 script.registerModule({
-    name: "🟥IntaveSpeed",
+    name: "🩠IntaveSpeed",
     description: "makes you fast af (feels like you turn black)",
     category: "Fun",
     tag: "JS",
@@ -360,7 +360,7 @@ var waitFlag;
 var hasFallen;
 
 script.registerModule({
-    name: "🟥AutoJump",
+    name: "🩠AutoJump",
     description: "AutoJump",
     category: "Fun",
     tag: "JS",

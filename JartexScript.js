@@ -2,7 +2,7 @@
 var script = registerScript({
     name: "Intave Script|",
     version: "1.0",
-    authors: ["FaaatPotato"]
+    authors: ["FaaatPotato, IntaveCoreDev"]
 });
 
 //hellom
@@ -279,7 +279,7 @@ var combat;
 
 script.registerModule({
     name: "IntaveSpeed|",
-    description: "makes you fast af (feels like you turn black)",
+    description: "timerspeed",
     category: "Fun",
     tag: "JS",
     settings: {

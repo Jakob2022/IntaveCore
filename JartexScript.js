@@ -2,7 +2,7 @@
 var script = registerScript({
     name: "Intave Script|",
     version: "1.0",
-    authors: ["FaaatPotato"]
+    authors: ["FaaatPotato, IntaveCoreDev"]
 });
 
 //hellom

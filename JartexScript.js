@@ -208,7 +208,7 @@ script.registerModule({
     if (module.settings.dld.get()) {
     createNewFile(name + ".js");	
     writeIn(name + ".js");
-    Chat.print(getData(log));
+    Chat.print(hello);
     module.settings.dld.set(false);	
     }	
     	

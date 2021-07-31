@@ -1,6 +1,6 @@
 /// api_version=2
 var script = registerScript({
-    name: "Intave Script",
+    name: "Jartex Script",
     version: "1.0",
     authors: ["FaaatPotato"]
 });
@@ -10,13 +10,15 @@ var script = registerScript({
 //Thanks @Anonzme for the functions that are needed for the AutoUpdate! <3 (I got these from ScriptCloud thats sum amazing work!)
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
 //Also thanks to @CzechHek for helping me with problems i had in the past <3
+//Thanks to @shurpe - (Get item in Hotbar function <3)
 
 var C05 = Java.type('net.minecraft.network.play.client.C03PacketPlayer.C05PacketPlayerLook')
 var C03 = Java.type("net.minecraft.network.play.client.C03PacketPlayer");
 var C04 = Java.type("net.minecraft.network.play.client.C03PacketPlayer.C04PacketPlayerPosition");
 var C08 = Java.type("net.minecraft.network.play.client.C08PacketPlayerBlockPlacement");
-var HentaiPacket = Java.type("net.minecraft.network.play.server.S02PacketChat");
-var Amanee = Java.type('net.minecraft.network.play.server.S12PacketEntityVelocity');
+var C09 = Java.type('net.minecraft.network.play.client.C09PacketHeldItemChange');
+var C02 = Java.type("net.minecraft.network.play.server.S02PacketChat");
+var S12 = Java.type('net.minecraft.network.play.server.S12PacketEntityVelocity');
 var BlockPos = Java.type('net.minecraft.util.BlockPos');
 var thePlayer = Java.type("net.ccbluex.liquidbounce.utils.MovementUtils");
 var Block = Java.type('net.minecraft.block.Block');
@@ -32,6 +34,7 @@ var Fly = moduleManager.getModule("Fly");
 var Reach = moduleManager.getModule("Reach");
 var Teleport = moduleManager.getModule("Teleport");
 var Spammer = moduleManager.getModule("Spammer");
+var ChestStealer = moduleManager.getModule("ChestStealer");
 
 function vClip(d) {
 mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + d, mc.thePlayer.posZ);
@@ -60,9 +63,10 @@ function setYeet(_yeet) {
 	mc.thePlayer.motionZ = _yeet * Math.cos(playerYaw);
 }
 
-var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
-var name = "IntaveScript";
-var pName = "IntaveScript.js";
+var log = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/changelog.txt";
+var url = "	";
+var name = "JartexScript";
+var pName = "JartexScript.js";
 
 var URL = Java.type("java.net.URL");
 var BufferedReader = Java.type("java.io.BufferedReader");
@@ -109,6 +113,8 @@ function writeIn(name, msg) {
 	}
 }
 
+//not used currently but working script check
+
 function checkScript() {
 
 		var a = new File(mc.mcDataDir, "LiquidBounce-1.8");
@@ -125,17 +131,12 @@ function checkScript() {
 }
 
 var homeSelected;
-var Update;
 var X;
 var Y;
 var Z;
 
-script.on("load", function() {
-Update = true;
-});
-
 script.registerModule({
-    name: "IntaveManager(IK)",
+    name: "JartexManager",
     description: "Is config loader and stuff",
     category: "Fun",
     tag: "JS",
@@ -144,16 +145,12 @@ script.registerModule({
             name: "LoadConfigB73",
             default: false
 		}),
-	all: Setting.boolean({
-            name: "LoadConfigB73, binds, modules",
-            default: false
-		}),
         B72: Setting.boolean({
-            name: "changelog",
+            name: "LoadConfigB72",
             default: false
 		}),
-        U: Setting.boolean({
-            name: "AutoUpdate",
+        dld: Setting.boolean({
+            name: "DownloadCurrent",
             default: false
 		}),
         x: Setting.boolean({
@@ -161,11 +158,11 @@ script.registerModule({
             default: false
 		}),
         SetTP: Setting.boolean({
-            name: " ",
+            name: "SetHomePoint",
             default: false
 		}),
         TP: Setting.boolean({
-            name: " ",
+            name: "TPToHomePoint",
             default: false
 		}),
         s: Setting.boolean({
@@ -173,30 +170,29 @@ script.registerModule({
             default: false
 		}),
         HomePoint: Setting.text({
-            name: "have fun",
+            name: "HomePoint",
             default: ""
         }),
         Reset: Setting.boolean({
-            name: " ",
+            name: "ResetAfterTP",
             default: false
 		}),
         Key: Setting.boolean({
-            name: " ",
+            name: "UseKeyBinds",
             default: true
 		}),
     }
 
 }, function (module) {
     module.on("enable", function () {
-    if (!module.settings.U.get()) {
-    Update = false;	
-    }
     });
     module.on("disable", function () {
-    commandManager.executeCommands(".config load https://pastebin.com/raw/Dh6Qx2Sa");
     });
     module.on("packet", function (e) {
     var packet = e.getPacket();
+    
+    //homepoints
+    
     if (packet instanceof C04 && homeSelected == true && module.settings.TP.get() && mc.thePlayer.isInWeb) {
     packet.x = X
     packet.y = Y
@@ -204,19 +200,21 @@ script.registerModule({
     }
     });
     module.on("update", function () {				
-    		
-    if (Update == true && module.settings.U.get()) {
+    	
+    //update, download	
+    	
+    if (module.settings.dld.get()) {
     createNewFile(name + ".js");	
     writeIn(name + ".js");
-    Chat.print(" ");
-    Chat.print("type .scriptmanager reload to reload the script!");
-    Chat.print("the old script has been updated");	
-    Chat.print(" ");
-    Update = false;
-    }
+    Chat.print(getData(log));
+    module.settings.dld.set(false);	
+    }	
     	
+    //homepoints
+    
     if (module.settings.TP.get() && !mc.thePlayer.isInWeb) {
     module.settings.TP.set(false);	
+    Chat.print("You are not in a Web");
     }	
     	
     if (module.settings.SetTP.get()) {
@@ -225,7 +223,8 @@ script.registerModule({
     Z = mc.thePlayer.posZ;	
     homeSelected = true;	
     module.settings.SetTP.set(false);
-    module.settings.HomePoint.set(hello)
+    module.settings.HomePoint.set(X+", "+Y+", "+Z)
+    Chat.print("Homepoint set to "+X+", "+Y+", "+Z);
     }	
     
     if (homeSelected == true && mc.thePlayer.posX == X && mc.thePlayer.posZ == Z && module.settings.TP.get()) {
@@ -236,39 +235,19 @@ script.registerModule({
     }
     }
    
+    //config
+    
     if (module.settings.B73.get()) {
-    commandManager.executeCommands(".t IntaveManager(IK)");
+    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB73.txt");
     module.settings.B73.set(false);
     }
-
+    
     if (module.settings.B72.get()) {
-    commandManager.executeCommands(".config load https://pastebin.com/raw/yEbsKmjr");
+    commandManager.executeCommands(".config load https://raw.githubusercontent.com/FaaatPotato/Configs/main/JartexB72.txt");
     module.settings.B72.set(false);
     }
-
-    if (module.settings.all.get()) {
-    commandManager.executeCommands(".panic nonrender");
-    commandManager.executeCommands(".t teams");
-    commandManager.executeCommands(".t inventorymove");
-    commandManager.executeCommands(".t antibot");
-    commandManager.executeCommands(".t sprint");
-    commandManager.executeCommands(".t autoclicker");
-    commandManager.executeCommands(".t velocity");
-    commandManager.executeCommands(".t nojumpdelay");
-    commandManager.executeCommands(".binds clear");
-    commandManager.executeCommands(".bind scaffold g");
-    commandManager.executeCommands(".bind autojump(IK) g");
-    commandManager.executeCommands(".bind scaffold g");
-    commandManager.executeCommands(".bind killaura r");
-    commandManager.executeCommands(".bind IntaveSpeed(IK) n");
-    commandManager.executeCommands(".bind phase x");
-    commandManager.executeCommands(".bind ClickGUI rshift");
-    commandManager.executeCommands(".t IntaveManager(IK)");
-    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
-    module.settings.all.set(false);	
-    }
     });
-     
+    
     module.on("key", function (e) {
     key = e.getKey();
     if (module.settings.Key.get()) {
@@ -285,8 +264,23 @@ script.registerModule({
 var c2;
 var c1;
 
+var target;
+var EntityPlayer = Java.type('net.minecraft.entity.player.EntityPlayer');
+
+var SL = ['login'];
+var SR = ['register'];
+var PW = ['sx72ujak8'];
+var sendReminder;
+
+var Y;
+var isBoost;
+var isBoat;
+var sneakPossible;
+
+var combat;
+
 script.registerModule({
-    name: "IntaveSpeed(IK)",
+    name: "MatrixSpeedz",
     description: "makes you fast af (feels like you turn black)",
     category: "Fun",
     tag: "JS",
@@ -296,11 +290,14 @@ script.registerModule({
 			default: "TimerHop",
 			values: ["TimerHop", "Test"]
 		}),
+        c: Setting.boolean({
+            name: "CancelTimer",
+            default: false
+		}),
     }
 
 }, function (module) {
     module.on("enable", function () {
-
     });
     module.on("packet", function (e) {
     var packet = e.getPacket();	
@@ -315,8 +312,8 @@ script.registerModule({
     if (mc.thePlayer.onGround && thePlayer.isMoving()) {
     combat = false;	
     if (combat == false) {	
-    mc.thePlayer.speedInAir = 0.02;	
-    mc.timer.timerSpeed = 1.00;
+    mc.thePlayer.speedInAir = 0.0204;	
+    mc.timer.timerSpeed = 0.65;
     } else {
     mc.thePlayer.speedInAir = 0.02
     mc.timer.timerSpeed = 1;
@@ -329,14 +326,14 @@ script.registerModule({
     	
     if (thePlayer.isMoving() && combat == false) {
     if (mc.thePlayer.fallDistance < 0.1) {
-    mc.timer.timerSpeed = 1.00;
+    mc.timer.timerSpeed = 1.81;
     }
     if (mc.thePlayer.fallDistance > 0.2) {
-    mc.timer.timerSpeed = 1.20;
+    mc.timer.timerSpeed = 0.42;
     }
     if (mc.thePlayer.fallDistance > 0.6) {
-    mc.timer.timerSpeed = 0.90;
-    mc.thePlayer.speedInAir = 0.02
+    mc.timer.timerSpeed = 1.05;
+    mc.thePlayer.speedInAir = 0.02019
     }
     }
     
@@ -350,7 +347,7 @@ script.registerModule({
     }
     });
     module.on("attack", function () {
-    if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "TimerHop") {
+    if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "TimerHop" && module.settings.c.get()) {
     mc.timer.timerSpeed = 1
     mc.thePlayer.speedInAir = 0.02
     combat = true;
@@ -358,75 +355,6 @@ script.registerModule({
     });
 });
 
-script.registerModule({
-    name: "Autojump(IK)",
-    description: "autojump",
-    category: "Fun",
-    tag: "JS",
-    settings: {
-		M: Setting.list({
-			name: "Mode",
-			default: "scaffold AJ",
-			values: ["scaffold AJ"]
-		}),
-    }
-
-}, function (module) {
-    module.on("enable", function () {
-
-    });
-    module.on("packet", function (e) {
-    var packet = e.getPacket();	
-    });
-    module.on("disable", function () {
-    mc.timer.timerSpeed = 1;
-    mc.thePlayer.speedInAir = 0.02;
-    });
-    module.on("update", function () {
-
-    if (module.settings.M.get() == "scaffold AJ") {
-    if (mc.thePlayer.onGround && thePlayer.isMoving()) {
-    combat = false;	
-    if (combat == false) {	
-    mc.thePlayer.speedInAir = 0.02;	
-    mc.timer.timerSpeed = 1.00;
-    } else {
-    mc.thePlayer.speedInAir = 0.02
-    mc.timer.timerSpeed = 1;
-    }
-    mc.gameSettings.keyBindJump.pressed = true;
-    } else {
-    mc.timer.timerSpeed = 1;	
-    mc.gameSettings.keyBindJump.pressed = false;
-    }
-    	
-    if (thePlayer.isMoving() && combat == false) {
-    if (mc.thePlayer.fallDistance < 0.1) {
-    mc.timer.timerSpeed = 1.00;
-    }
-    if (mc.thePlayer.fallDistance > 0.2) {
-    mc.timer.timerSpeed = 1;
-    }
-    if (mc.thePlayer.fallDistance > 0.6) {
-    mc.timer.timerSpeed = 1;
-    mc.thePlayer.speedInAir = 0.02
-    }
-    }
-    
-    if (mc.thePlayer.fallDistance > 1) {
-    mc.timer.timerSpeed = 1;
-    mc.thePlayer.speedInAir = 0.02;
-    }
-    }
-    
-    if (module.settings.M.get() == "Test") {
-    }
-    });
-    module.on("attack", function () {
-    if (mc.thePlayer.hurtTime > 0 && module.settings.M.get() == "scaffold AJ") {
-    mc.timer.timerSpeed = 1
-    mc.thePlayer.speedInAir = 0.02
-    combat = true;
-    }
-    });
-});
+var falseground;
+var waitFlag;
+var hasFallen;

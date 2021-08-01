@@ -5,7 +5,7 @@ var script = registerScript({
     authors: ["FaaatPotato (made all code), IntaveCoreDev (skided and changed a bit)"]
 });
 
-//ALL CODE IS SKIDED FROM FAAATPOTATOES (https://www.youtube.com/channel/UCw8AlCFTC6DEMwOOpF8bgMg) JATREXMANAGER2
+//ALL CODE IS SKIDED FROM FAAATPOTATOES (https://www.youtube.com/channel/UCw8AlCFTC6DEMwOOpF8bgMg) JATREXMANAGER
 
 //Thanks @Anonzme for the functions that are needed for the AutoUpdate! <3 (I got these from ScriptCloud thats sum amazing work!)
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
@@ -238,7 +238,6 @@ script.registerModule({
     
     if (module.settings.B73.get()) {
     commandManager.executeCommands(".panic nonrender");
-    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     commandManager.executeCommands(".t antibot");
     commandManager.executeCommands(".t teams");
     commandManager.executeCommands(".t velocity");
@@ -250,10 +249,10 @@ script.registerModule({
     commandManager.executeCommands(".binds clear");
     commandManager.executeCommands(".bind ClickGUI rshift");
     commandManager.executeCommands(".bind killaura r");
-    commandManager.executeCommands(".bind Intavespeed| n");
     commandManager.executeCommands(".bind scaffold g");
-    commandManager.executeCommands(".bind Intavespeed| g");
-    commandManager.executeCommands(".bind intavespeed n");
+    commandManager.executeCommands(".bind Intavespeed| n");
+    commandManager.executeCommands(".bind speed g");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     module.settings.B73.set(false);
     }
     

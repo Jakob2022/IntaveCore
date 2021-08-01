@@ -303,7 +303,6 @@ script.registerModule({
     
     if (module.settings.B73.get()) {
     commandManager.executeCommands(".panic nonrender");
-    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     commandManager.executeCommands(".t antibot");
     commandManager.executeCommands(".t teams");
     commandManager.executeCommands(".t velocity");
@@ -313,12 +312,7 @@ script.registerModule({
     commandManager.executeCommands(".t nojumpdelay");
     commandManager.executeCommands(".t noslow");
     commandManager.executeCommands(".binds clear");
-    commandManager.executeCommands(".bind ClickGUI rshift");
-    commandManager.executeCommands(".bind killaura r");
-    commandManager.executeCommands(".bind Intavespeed| n");
-    commandManager.executeCommands(".bind scaffold g");
-    commandManager.executeCommands(".bind Intavespeed| g");
-    commandManager.executeCommands(".bind intavespeed n");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
     module.settings.B73.set(false);
     }
     

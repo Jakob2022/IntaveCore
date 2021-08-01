@@ -2,10 +2,10 @@
 var script = registerScript({
     name: "Intave Script|",
     version: "1.0",
-    authors: ["FaaatPotato, IntaveCoreDev"]
+    authors: ["FaaatPotato (made all code), IntaveCoreDev (skided and changed a bit)"]
 });
 
-//hellom
+//ALL CODE IS SKIDED FROM FAAATPOTATOES (https://www.youtube.com/channel/UCw8AlCFTC6DEMwOOpF8bgMg) JATREXMANAGER 
 
 //Thanks @Anonzme for the functions that are needed for the AutoUpdate! <3 (I got these from ScriptCloud thats sum amazing work!)
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
@@ -64,9 +64,9 @@ function setYeet(_yeet) {
 }
 
 var log = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/changelog.txt";
-var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/JartexScript.js";
-var name = "JartexScript";
-var pName = "JartexScript.js";
+var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/IntaveScript.js";
+var name = "IntaveScript";
+var pName = "IntaveScript.js";
 
 var URL = Java.type("java.net.URL");
 var BufferedReader = Java.type("java.io.BufferedReader");
@@ -236,7 +236,23 @@ script.registerModule({
     //config
     
     if (module.settings.B73.get()) {
+    commandManager.executeCommands(".panic nonrender");
     commandManager.executeCommands(".config load https://pastebin.com/raw/G9rGDKKc");
+    commandManager.executeCommands(".t antibot");
+    commandManager.executeCommands(".t teams");
+    commandManager.executeCommands(".t velocity");
+    commandManager.executeCommands(".t sprint");
+    commandManager.executeCommands(".t inventorymove");
+    commandManager.executeCommands(".t autoclicker");
+    commandManager.executeCommands(".t nojumpdelay");
+    commandManager.executeCommands(".t noslow");
+    commandManager.executeCommands(".binds clear");
+    commandManager.executeCommands(".bind ClickGUI rshift");
+    commandManager.executeCommands(".bind killaura r");
+    commandManager.executeCommands(".bind Intavespeed| n");
+    commandManager.executeCommands(".bind scaffold g");
+    commandManager.executeCommands(".bind Intavespeed| g");
+    commandManager.executeCommands(".bind intavespeed n");
     module.settings.B73.set(false);
     }
     

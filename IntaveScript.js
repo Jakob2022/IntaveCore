@@ -1,7 +1,7 @@
 /// api_version=2
 var script = registerScript({
     name: "Intave Script|",
-    version: "1.0",
+    version: "1.1",
     authors: ["FaaatPotato (made all code), IntaveCoreDev (skided and changed a bit)"]
 });
 

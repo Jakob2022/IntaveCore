@@ -1,2 +1,3 @@
 unchat &r IntaveCore successfully updated 
 unchat &r use .scriptmanager reload
+unchat &r and delete first line (nothing) because idk why it bags if not to do this

@@ -137,7 +137,7 @@ var Z;
 
 script.registerModule({
     name: "IntaveManager|",
-    description: "Is config loader and stuff",
+    description: "IntaveCoreManager",
     category: "Fun",
     tag: "JS",
     settings: {
@@ -295,7 +295,7 @@ var combat;
 
 script.registerModule({
     name: "IntaveSpeed|",
-    description: "makes you fast af (feels like you turn black)",
+    description: "timer speed",
     category: "Fun",
     tag: "JS",
     settings: {

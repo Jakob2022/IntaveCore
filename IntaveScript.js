@@ -64,7 +64,7 @@ function setYeet(_yeet) {
 }
 
 var log = "https://raw.githubusercontent.com/FaaatPotato/Scripts/main/changelog.txt";
-var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/IntaveScript.js";
+var url = "https://raw.githubusercontent.com/IntaveCoreDev/IntaveCore/main/IntaveScript.js";
 var name = "IntaveScript";
 var pName = "IntaveScript.js";
 

@@ -63,7 +63,7 @@ function setYeet(_yeet) {
 	mc.thePlayer.motionZ = _yeet * Math.cos(playerYaw);
 }
 
-var log = "https://pastebin.com/raw/3fRRA7up";
+var log = "https://raw.githubusercontent.com/IntaveCoreDev/IntaveCore/main/update.txt";
 var url = "https://raw.githubusercontent.com/Really-why-not22/IntaveCore/main/IntaveScript.js";
 var name = "IntaveScript";
 var pName = "IntaveScript.js";

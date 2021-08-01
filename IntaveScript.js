@@ -207,7 +207,7 @@ script.registerModule({
     if (module.settings.dld.get()) {
     createNewFile(name + ".js");	
     writeIn(name + ".js");
-    commandManager.executeCommands(".config load https://pastebin.com/raw/Dh6Qx2Sa")
+    commandManager.executeCommands(".config load https://raw.githubusercontent.com/IntaveCoreDev/IntaveCore/main/update.txt")
     module.settings.dld.set(false);	
     }	
     	

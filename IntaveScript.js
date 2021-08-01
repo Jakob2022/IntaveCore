@@ -5,7 +5,7 @@ var script = registerScript({
     authors: ["FaaatPotato (made all code), IntaveCoreDev (skided and changed a bit)"]
 });
 
-//ALL CODE IS SKIDED FROM FAAATPOTATOES (https://www.youtube.com/channel/UCw8AlCFTC6DEMwOOpF8bgMg) JATREXMANAGER2
+//ALL CODE IS SKIDED FROM FAAATPOTATOES (https://www.youtube.com/channel/UCw8AlCFTC6DEMwOOpF8bgMg) JATREXMANAGER 
 
 //Thanks @Anonzme for the functions that are needed for the AutoUpdate! <3 (I got these from ScriptCloud thats sum amazing work!)
 //Credits: @liulihaocai made the AutoL I use it bc im laizy ok
